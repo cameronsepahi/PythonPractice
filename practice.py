@@ -10,5 +10,12 @@
 
 # print(addNums(1,2))
 
+#While loops
+
+i = 1
+while i < 6:
+    print(i)
+    i = i + 1
+
 
 
