@@ -25,4 +25,6 @@ names_concatenated = function3(string_list)
 
 print("Tom's total expenses: ", toms_total)
 print("Joe's total expenses: ", joes_total)
-print("Names concatenation: ", names_concatenated)
+# print("Names concatenation: ", names_concatenated) -> Produces error b/c
+# total var (total = 0) is an int, and you're using strings as concatenation data type 
+

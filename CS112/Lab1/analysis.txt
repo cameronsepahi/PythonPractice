@@ -1,0 +1,109 @@
+Name: Cameron Sepahi
+
+<<TASK 1>>
+
+    randomNumbers()
+
+    randomNumbers() enables one to input an arbitrary integerer of size n (could be 5, 
+    or 100). This integer designates the length of a list that contains unique integers 
+    in a random order. For example, if I input 5, then the outputted list could look 
+    like: [0,4,3,2,1]. This is achieved by checking if the list is less than length n,
+    and if it is, it appends a randomly generated number between 0 and n-1 (since the
+    first index of the list starts at 0, not 1). Then, a condition checks if a specific
+    index (location) of the list contains the same number that was randomly generated, and
+    if they are the same, it restarts the process until a new, non-duplicated number is
+    generatted, appending that value to the list. 
+
+    This process is very inefficient because it requires two iteration processes: one to
+    generate random numbers and append them to the list, and another to check each value
+    of the list for duplicates. Since the probability that duplicates occur, the function
+    would need to be iterated many times, especially if the inputted n integer is a large value,
+    creating redundancy in the code.
+
+    randomIndexes()
+
+    Similar to randomNumbers(), randomIndexes() enables one to input an input of arbitrary 
+    int of size n, which designates the size of the list of integers that is outputted. This list
+    contains unique integers between 0 and n-1 in a random order (since the first value of a 
+    list is at index 0, not 1). Then, the function generates an integer of -1 and appends each
+    index (location) of the list with -1. For example, if n is 5, then our list would look like
+    [-1, -1, -1, -1, -1]. Subsequently, the function iterates through a random index of the list, 
+    checks if this random location of the list contains -1, and if it does, it generates a new
+    random integer with an aim of replacing a -1 value somewhere in the list with a number that's
+    between 0 and n-1. This process is repeated until every single index (or location) of the list
+    has a unique number between 0 and n-1 (remember, n is the value the user inputs, so if they
+    input 5, then the list will have randomly ordered integers from 0-4). The function then outputs
+    this list.
+
+    This function is inefficient because, similar to randomNumbers(), it contains two processes
+    of iteration: (1), it checks for each number in the range inputted by the user (of value n), and
+    two it iterates through each index of the list (e.g. index 0 of [-1,2,3,0,4]. which is -1), and
+    attempts to replace it with a num between 0 and n-1. This process is inefficient due to the 
+    redundancy in iterating through the stored list, coupled with the generation of random numbers
+    in each iteration process. You could imagine that, given a large 'n' value of say, 10,000, it 
+    would take a long amount of time for the computer to process all the associated computations of 
+    the function. 
+
+    randomLists()
+
+    This function takes the same arbitrary int (n) input as the two functions above, and also generates
+    the same output, but goes about the generation of this list in a different way. Let's say our
+    input is n = 5. We generate a random number (again, between 0 and n-1, where n-1 is 4 in this case),
+    and append this random number to the list we created. We then convert this list to a set, where a set
+    is similar to a list *except* it cannot contain any duplicate values (e.g. if our list was [1,2,2,4,5]),
+    our set in python would be: {1,2,4,5}. Since our output needs to contain unique integers for each
+    element (implying it should look something like [0,3,2,1,4], and not [0,0,1,4,3]), our function checks the
+    length of this set, ascertains as to whether or not its length is equal to n, and if it is we convert
+    the set back to a list, shuffle the results to randomize the order, and print the result. This way, we
+    can be certain that our list will have to have unique elements, since a set does not contain any duplicates. 
+    Thus, if our set does contain duplicates, its length cannot equal n, so if it does equal n, we know that each
+    element generated and appended to the list was unique!
+
+    randomLists() is inefficient because it iterates through each element in the list, converts the list to a
+    set (data structure that doesn't contain duplicates), and checks the length of this set. If the length does not
+    meet the inputted value (n), then the process is restarted, thus creating inefficiences in computation. 
+
+
+<<TASK 2>>
+
+    The function randomShuffle(), similar to the functions described above, takes an arbitrary integer input
+    value, n, and creates a list of n length that contains ordered integers (e.g. if n is 5, then the list would
+    be: [0,1, 2, 3, 4]. Then, it iterates through each element in this list and generates a random number between i and
+    n-1 (number between 0 and 4 in first iteration, then number between 1 and 4 in next iteration, 2 and 4 in next 
+    iteration, and so on). It does this to narrow the generation of random numbers such that the probability that 
+    a duplicate number is generated is lower, making the code more efficient. Subsequently, the i index of the list
+    (in the first iteration, i = 0, so the 1st index of the list is 0, since our list was ordered in inc. order) is 
+    swapped with a randum index of the list based on the generatted random number (let's say, at i=0, or first index, 
+    we generated a random number of 2. Given our list: [0,1,2,3,4], we swap 2 for 0, so our new output is: [2,1,0,3,4]).
+    This process is repeated until we output the list with unique integers in each element, and a length of n. 
+
+<<TASK 3>>
+
+    a. When creating the regular dictionary using the parsed key:value stores that was provided, I expect the order of 
+    the dictionary to be arbitrary, not following any particular alphabetical order of the name of the cities. Conversely,
+    I expect to see the OrderedDict() to have alphabetically ordered city names, and the values associated with the cities.
+
+    b. //coded
+
+    c. Unexpectedly, the alphabetical order of the city names in dict() and OrderedDict() were the same (e.g. the first key 
+    in dict(), 'Aberdeen': 57401 matched the first key in OrderedDict(). This is also true of the last key:value pair of both
+    dictionaries.) 
+
+
+<<TASK 4>>
+
+    a. My strategy for solving this problem is to create a seperate blank list, iterate through every index of
+    the length of list 1 (since the length of both inputted lists, list1 and list2, should be the same), and 
+    append the ith value of list2 and list1 together. Then, I will sort through this new list, iterate through
+    every element in it, and append the second index of each element in the list (e.g. if I have (1,2), I will
+    append i[1] to a new list I will create). This should effectively allow me to replicate reversing the order
+    of list2, without explicitly doing so by connecting the two lists together in a tuple format. 
+
+    b. The minimum product sum of the following lists (numbers1 and numbers2) is 159. 
+
+
+
+
+
+
+
